@@ -76,4 +76,4 @@ There are forked repositories inside this repository. Please also check [NOTICE]
 * HandyRL:MIT, https://github.com/DeNA/HandyRL
 
 ##  Code
-Apache 2.0
+MIT
