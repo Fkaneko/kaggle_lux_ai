@@ -17,7 +17,7 @@ $$
 \pi_{\theta}(a|s) = \prod_{i}^{N}\pi_{\theta}(a_{u_{i}}|a_{u_{<i}},s), \hspace{0.5cm} s:{\rm state},\  \ a_{u_{i}}: {\rm unit_i\ action}
 $$
 
-* Extending handyrl : Extending [handyrl](https://github.com/DeNA/HandyRL) to auto regressive multi agent policy from single agent policy.
+* Extending handyrl : Extending [handyrl](https://github.com/DeNA/HandyRL) to multi agent policy from single agent policy.
 Specifically all tensors are replaced like this, (episodes, steps, players, actions) -> (episodes, steps, players, units, actions) and loss is modified for auto regressive style.
 
 * Environment: [Gym environment](https://github.com/glmcdona/LuxPythonEnvGym), easy to use and really fast. But there might be some minor game logic differences from the original one. I fixed it with using 2000 episode replay files, after fixing these points, I confirmed the perfect replication of the original game logic. I will check carefully it again and make a pull request on the gym env repo if it is true.
@@ -28,7 +28,6 @@ Specifically all tensors are replaced like this, (episodes, steps, players, acti
     * unlike image cation model, we know the exact place of each unit that's why I directly use the unit position"s feature of the encoder, instead of the pooled feature.
 * UPGO is much faster for convergence than V-trace.
 * kaggle notebook: [here](), you can check my agent of 1035 epoch(500,000 episodes).
-* code/github: I shared it [here](https://github.com/Fkaneko/kaggle_lux_ai).
 
 This is my first reinforcement learning project and there might be some misunderstandings. Please be free to ask me if you find something weird.
 
@@ -60,7 +59,8 @@ Please check the `src/config/handyrl_config.yaml` for the default training confi
 Also need to check the original [handyrl documentation](https://github.com/DeNA/HandyRL).
 
 ## Testing
-Please check your agent on kaggle like [this one].
+You can check your agent on a kaggle env like [this one](https://github.com/Fkaneko/kaggle_lux_ai).
+After training you will find the checkpoint under `./models`. 
 <!-- ```python -->
 <!-- python test_agents.py -->
 <!-- ``` -->
