@@ -1,4 +1,4 @@
-# lux ai completion
+# lux ai competition 
 Off policy reinforcement learning approach for Lux ai competition Kaggle
 For the details of the competition, please check this page -> [Lux ai](https://www.kaggle.com/c/lux-ai-2021/overview)
 
