@@ -71,6 +71,7 @@ Please check your agent on kaggle like [this one].
 
 # License
 ## Dependent repositories
+There are forked repositories inside this repository. Please also check [NOTICE](./NOTICE)
 * LuxPythonEnvGym: MIT, https://github.com/glmcdona/LuxPythonEnvGym
 * HandyRL:MIT, https://github.com/DeNA/HandyRL
 
