@@ -25,6 +25,7 @@ Specifically all tensors are replaced like this, (episodes, steps, players, acti
     * (x, y, cargo_space, fuel) for each unit. This 4 dim is converted into 32 dim through a linear layer.
     * unlike image cation model, we know the exact place of each unit that's why I directly use the unit position"s feature of the encoder, instead of the pooled feature.
 * UPGO is much faster for convergence than V-trace.
+* Reward: use intermediate reward, borrow from glmcdona's implementation and reduce unit part by 1/2 or 1/4.
 * kaggle notebook: [here](https://www.kaggle.com/sai11fkaneko/lux-ai-off-policy), you can check my agent of 1035 epoch(500,000 episodes).
 
 This is my first reinforcement learning project and there might be some misunderstandings. Please be free to ask me if you find something weird.
