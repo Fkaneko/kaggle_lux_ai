@@ -54,7 +54,7 @@ yes | bash install.sh
 ## Training
 Simply run followings
 ```python
-python handyrl_train.py -t   # for reinforcement learning from random weight
+python handyrl_main.py -t   # for reinforcement learning from random weight
 ```
 Please check the `src/config/handyrl_config.yaml` for the default training configuration.
 Also need to check the original [handyrl documentation](https://github.com/DeNA/HandyRL).
