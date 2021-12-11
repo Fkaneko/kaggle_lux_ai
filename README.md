@@ -20,14 +20,12 @@ $$
 * Extending handyrl : Extending [handyrl](https://github.com/DeNA/HandyRL) to multi agent policy from single agent policy.
 Specifically all tensors are replaced like this, (episodes, steps, players, actions) -> (episodes, steps, players, units, actions) and loss is modified for auto regressive style.
 
-* Environment: [Gym environment](https://github.com/glmcdona/LuxPythonEnvGym), easy to use and really fast. But there might be some minor game logic differences from the original one. I fixed it with using 2000 episode replay files, after fixing these points, I confirmed the perfect replication of the original game logic. I will check carefully it again and make a pull request on the gym env repo if it is true.
-
 * Decoder input: 
     * making unique unit order: beginning from min y unit and then find the nearest neighbor unit repeatedly.
     * (x, y, cargo_space, fuel) for each unit. This 4 dim is converted into 32 dim through a linear layer.
     * unlike image cation model, we know the exact place of each unit that's why I directly use the unit position"s feature of the encoder, instead of the pooled feature.
 * UPGO is much faster for convergence than V-trace.
-* kaggle notebook: [here](), you can check my agent of 1035 epoch(500,000 episodes).
+* kaggle notebook: [here](https://www.kaggle.com/sai11fkaneko/lux-ai-off-policy), you can check my agent of 1035 epoch(500,000 episodes).
 
 This is my first reinforcement learning project and there might be some misunderstandings. Please be free to ask me if you find something weird.
 
@@ -62,7 +60,7 @@ Please check the `src/config/handyrl_config.yaml` for the default training confi
 Also need to check the original [handyrl documentation](https://github.com/DeNA/HandyRL).
 
 ## Testing
-You can check your agent on a kaggle env like [this one](https://github.com/Fkaneko/kaggle_lux_ai).
+You can check your agent on a kaggle env like [this one](https://www.kaggle.com/sai11fkaneko/lux-ai-off-policy).
 After training you will find the checkpoint under `./models`. 
 <!-- ```python -->
 <!-- python test_agents.py -->
