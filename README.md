@@ -32,6 +32,9 @@ Specifically all tensors are replaced like this, (episodes, steps, players, acti
 This is my first reinforcement learning project and there might be some misunderstandings. Please be free to ask me if you find something weird.
 
 # How to run
+This is a code for a kaggle competition and some part is not so clean right now.
+I will fix such a part little by little.
+
 ## environment
 * Ubuntu 18.04
 * Python with Anaconda/Mamba
