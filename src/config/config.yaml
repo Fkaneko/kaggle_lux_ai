@@ -1,0 +1,122 @@
+defaults:
+  - trainer: trainer_defaluts
+
+# hydra override
+hydra:
+  run:
+    dir: ../working/lux_${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    # Output directory for sweep runs
+    dir: ../working/multi_run/lux_${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+
+# trainer override
+trainer:
+  # default_root_dir: ${hydra:run.dir}
+  gpus: 1
+  max_epochs: 25
+  precision: 16
+  benchmark: false
+  deterministic: false
+
+# neptune settings
+nept_tags: [Null]
+
+# input data config
+data_dir: "../input/lux-ai-episodes"
+num_classes: 1
+
+seed: 42
+num_workers: 16
+batch_size: 128
+
+aug_mode: 0
+
+# fold def
+n_splits: 5
+target_key: "target"
+group_key: "episode_id"
+split_how: "stratified_group"  # stratified/group/stratified_group
+val_fold: 0
+
+# learning rate
+lr: 0.01
+optim_name: adam
+warmup_ratio: 0.1
+
+is_test: false
+is_debug: false
+find_lr: false
+ckpt_path: Null
+#
+
+# train proceduore
+monitor: "val_f1"
+monitor_mode: "max"
+
+# test configuration
+test_sampling_delta: 16
+test_with_val: False
+
+obs:
+  num_state_features: 20
+  input_size: [32,32]
+  is_xy_order: False   # False: [y, x] order, True: [x, y] order for input numpy feature
+  input_cache_dir: "../input/imitation_baseline_input_maps"
+  cache_obs_in_memory: False
+  random_crop: False
+
+internal_val:
+  num_episodes: 50
+
+action:
+  num_actions: 5
+
+model:
+    loss:
+      type: "ce"  #  bce/"bce_seg_denoise"
+      reduction: "none"  #  none/mean/sum
+      weights: {"outputs":1.0,"aux_out":0.0}
+    channels_last: False
+    last_act: "softmax"  # sigmoid/seg_act
+    metric: "f1"
+    stride_override: [1,1]
+    type: "image_caption"  # imitation_baseline/resnet_baseline
+    imitation_baseline:
+      block_type: "defalut"
+    resnet_baseline:
+      block_type: "defalut"
+    image_caption:
+      block_type: "defalut"
+      in_channels: 20
+      encoder_out_indices: [3]
+      encoder_hidden_dim: 64
+      use_point_conv: False
+    ignore_class_index: 20
+    no_action_index: 5
+    no_action_droprate: 0.8
+    decoder:
+      in_features: 4
+      embed_dim: 32
+      out_features: 5
+      hidden_dim: 128
+      max_sequence: 128
+      input_feed_size: 0
+      att_hid_size: 0
+      use_pooled_feat: False 
+    timm_params:
+      encoder_name: "resnet18d" # "efficientnet_b0"
+      pretrained: True
+      num_classes: 0  # class head will be defined at different stage
+    smp_params:
+      arch_name: "unetpp"
+      encoder_name: "timm-efficientnet-b0"
+      encoder_weights: "imagenet"
+      in_channels: 3
+      classes: 1
+      decoder_attention_type: "scse"
+      # aux_params: {"palceholder": 0}
+    pool:
+      gem_power: 3  # p=1 normal avg_pool
+      gem_requires_grad: False
+    save_replay: False
+
