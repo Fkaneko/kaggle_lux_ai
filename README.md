@@ -72,7 +72,8 @@ After training you will find the checkpoint under `./models`.
 ## Learning Result
   - evaluate every 100 epochs
   - match 50 episodes with [imitation learning baseline model](https://www.kaggle.com/realneuralnetwork/lux-ai-with-il-decreasing-learning-rate) (score ~1350) without internal unit move resolution.
-    
+  - 100, 300 and 800 epoch models are visualized [here](https://www.kaggle.com/sai11fkaneko/lux-ai-off-policy)
+
 | epoch | win rate | tile diff |
 | --- | --- | --- |
 |100 |  0.058 |   -28.4|
