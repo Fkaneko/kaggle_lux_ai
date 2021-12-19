@@ -13,9 +13,10 @@ Because remaining 1 or half day left when I confirmed the clear convergence of m
 * model: based on [image caption](https://arxiv.org/abs/1707.07998), task, encoder and lstm decoder architecture.
 * multi agent action space: using auto regressive policy, [arxiv](https://arxiv.org/abs/1708.04782)
 
-$$
+![equation](./image/equation_auto_regressive_2.png)
+<!-- $$
 \pi_{\theta}(a|s) = \prod_{i}^{N}\pi_{\theta}(a_{u_{i}}|a_{u_{<i}},s), \hspace{0.5cm} s:{\rm state},\  \ a_{u_{i}}: {\rm unit_i\ action}
-$$
+$$ -->
 
 * Extending handyrl : Extending [handyrl](https://github.com/DeNA/HandyRL) to multi agent policy from single agent policy.
 Specifically all tensors are replaced like this, (episodes, steps, players, actions) -> (episodes, steps, players, units, actions) and loss is modified for auto regressive style.
