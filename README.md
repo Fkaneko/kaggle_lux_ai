@@ -69,7 +69,20 @@ After training you will find the checkpoint under `./models`.
 <!-- Testing enviroment is done with gym env - stable baseline agent class. -->
 <!-- Please check these class for run match. -->
 
-
+## Learning Result
+  - evaluate every 100 epochs
+  - match 50 episodes with [imitation learning baseline model](https://www.kaggle.com/realneuralnetwork/lux-ai-with-il-decreasing-learning-rate) (score ~1350) without internal unit move resolution.
+    
+| epoch | win rate | tile diff |
+| --- | --- | --- |
+|100 |  0.058 |   -28.4|
+|200 |  0.212 |   -13.0|
+|300 |  0.442 |    -0.0|
+|400 |  0.615 |    10.4|
+|500 |  0.731 |    15.4|
+|600 |  0.673 |     9.7|
+|700 |  0.712 |    14.1|
+|800 |  0.750 |    15.1|
 
 # License
 ## Dependent repositories
