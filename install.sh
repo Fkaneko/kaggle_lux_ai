@@ -13,7 +13,7 @@ mamba install -y \
 
 mamba install -y -c plotly plotly=4.14.3
 pip install \
-    pytorch-lightning==1.4.9 \
+    pytorch-lightning \
     kaggle \
     albumentations
 
